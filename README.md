@@ -15,7 +15,6 @@ Some odds and ends to help working with CSV files.
 Enter source and destination locations, and if needed set the number of rows in each section with the row_size parameter
 
 `
-#### Parameters #####
 import math as m
 row_size = 50000
 source_location = 'D:/Test/test.csv'
