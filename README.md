@@ -1,4 +1,4 @@
-# csvtoolkit
+# CSV bag of random tools
 Some odds and ends to help working with CSV files.
 
 ## Contents
