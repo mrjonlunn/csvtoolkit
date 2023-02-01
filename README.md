@@ -5,6 +5,7 @@ Some odds and ends to help working with CSV files.
 ### Python
 - CSV Splitter - Helps break down big files into smaller ones to loading or sampling
 - CSV Sampler -  Get the first n rows of data for sampling
+- CSV Random Sampler -  Gets a random sample from a file
 
 ### Databricks - PySpark
 - Loading CSV files
@@ -58,8 +59,51 @@ with open(source_location, 'r') as f:
 ```
 
 ### CSV Sampler
+Just a basic bit of python that reads the first 'x' amount of rows as a sample.
 
-TBA
+```
+import csv
+
+sample_size = 10000
+
+filename = "C:/filelocation/pythontest.csv"
+output_filename = "C:/filelocation/samplefile_first_" + str(sample_size) + ".csv"
+
+with open(filename, "r") as file:
+    reader = csv.reader(file)
+    rows = []
+    for i, row in enumerate(reader):
+        rows.append(row)
+        if i == sample_size:
+            break
+
+with open(output_filename, "w", newline="") as new_file:
+    writer = csv.writer(new_file)
+    for row in rows:
+        writer.writerow(row)
+```
+### CSV Random Sampler
+And one that takes a random sample of the file
+
+```
+import csv
+import random
+
+sample_size = 10000
+
+filename = "file.csv"
+output_filename = "C:/Users/jon.lunn/Downloads/samplefile_random_" + str(sample_size) + ".csv"
+
+with open(filename, "r") as file:
+    reader = csv.reader(file)
+    rows = list(reader)
+    selected_rows = random.sample(rows, sample_size)
+
+with open(output_filename, "w", newline="") as new_file:
+    writer = csv.writer(new_file)
+    for row in selected_rows:
+        writer.writerow(row)
+```
 
 ## Databricks
 The examples here use the auto-mpg machine learning datset from the website https://archive.ics.uci.edu/ml/datasets/auto+mpg
