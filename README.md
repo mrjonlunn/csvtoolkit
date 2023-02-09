@@ -92,7 +92,7 @@ import random
 sample_size = 10000
 
 filename = "file.csv"
-output_filename = "C:/Users/jon.lunn/Downloads/samplefile_random_" + str(sample_size) + ".csv"
+output_filename = "C:/filelocation/samplefile_random_" + str(sample_size) + ".csv"
 
 with open(filename, "r") as file:
     reader = csv.reader(file)
